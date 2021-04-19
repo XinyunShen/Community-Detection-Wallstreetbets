@@ -15,11 +15,23 @@ def preprocess(text):
     text = ' '.join(text)
     return text
 
+def get_relation(submission_id, top_author, all_replies, post_comments, comments):
+    # while all_replies:
+    #     reply = all_replies.pop(0)
+    for reply in all_replies:
+        post_comments_output = "{},{},{},{}\n".format(submission_id, reply.id, top_author, reply.author)
+        comment_output = '{},{},{},"{}"\n'.format(submission_id, reply.id, reply.author, preprocess(reply.body))
+        # print(post_comments_output)
+        print(comment_output)
+        post_comments.write(post_comments_output)
+        comments.write(comment_output)
+
+
 def main():
     api = PushshiftAPI()
     start_time = int(dt.datetime(2021, 1, 1).timestamp())
-    end_time = int(dt.datetime(2021, 3, 1).timestamp())
-    submissions = api.search_submissions(after=start_time, before=end_time,
+    # end_time = int(dt.datetime(2021, 3, 1).timestamp())
+    submissions = api.search_submissions(after=start_time, before=1617998413,
                                         subreddit='wallstreetbets',
                                         filter=['id','url', 'selftext','author', 'title', 'domain'])
     reddit = praw.Reddit(client_id='8N3Jm_LZUT-sjQ',
@@ -34,12 +46,12 @@ def main():
     comment_info = "comment_info"
 
     i = 1000
-    j = 0
+    j = 1
     post_comments = open("{}{}.csv".format(post_comments_info,j),'a')
     posts = open("{}{}.csv".format(post_info,j),'a')
     comments = open("{}{}.csv".format(comment_info,j),'a')   
     for submission in submissions:
-        if i == 1000:
+        if i == 200:
             j += 1
             i = 0
             post_comments = open("{}{}.csv".format(post_comments_info,j),'a')
@@ -61,19 +73,42 @@ def main():
             print(f"Unknown post state: {cur_submission.removed_by_category}")
             continue
 
+        submission_id = submission.id
+        timestamp = submission.created_utc
+        title = submission.title
+        post_author = submission.author
+
         print("----------------------POSTS {}----------------------".format(i))  
         i += 1
-        post_output = '{},{},{},{},"{}","{}"\n'.format(submission.id,submission.created_utc,submission.author,submission.url,submission.title,preprocess(submission.selftext))
+        post_output = '{},{},{},{},"{}","{}"\n'.format(submission_id,timestamp,post_author,submission.url,title,preprocess(submission.selftext))
         print(post_output)
         posts.write(post_output)
-        print("----------------------comments----------------------")
-        cur_submission.comments.replace_more(limit=None)
-        for comment in cur_submission.comments.list():
-            post_comments_output = "{},{},{}\n".format(submission.id, submission.author, comment.author)
-            post_comments.write(post_comments_output)
-            comment_output = '{},{},"{}"\n'.format(submission.id, comment.author, preprocess(comment.body))
-            comments.write(comment_output)
+        print("----------------------COMMENTS----------------------")
+        cur_submission.comments.replace_more(limit=None, threshold=5)
+        comment_queue = cur_submission.comments[:]  # Seed with top-level
+        while comment_queue:
+            comment = comment_queue.pop(0)
+            comment_author = comment.author
+            comment_id = comment.id
+            comment_text = comment.body
+            if comment_text == "[deleted]":
+                continue
+            post_comments_output = "{},{},{},{}\n".format(submission_id, comment_id, post_author, comment_author)
+            comment_output = '{},{},{},"{}"\n'.format(submission_id, comment_id, comment_author, preprocess(comment_text))
+            # print(post_comments_output)
             print(comment_output)
+            post_comments.write(post_comments_output)
+            comments.write(comment_output)
+            reply_queue = comment.replies
+            get_relation(submission_id, comment_author, reply_queue, post_comments, comments)
+            comment_queue.extend(comment.replies)
+        # for comment in cur_submission.comments.list():
+        #     post_comments_output = "{},{},{}\n".format(submission.id, submission.author, comment.author)
+        #     post_comments.write(post_comments_output)
+        #     comment_output = '{},{},"{}"\n'.format(submission.id, comment.author, preprocess(comment.body))
+        #     comments.write(comment_output)
+        #     print(comment_output)
+    
     
 if __name__ == '__main__':
     main()
