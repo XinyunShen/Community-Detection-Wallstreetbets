@@ -31,7 +31,7 @@ def main():
     api = PushshiftAPI()
     start_time = int(dt.datetime(2021, 1, 1).timestamp())
     # end_time = int(dt.datetime(2021, 3, 1).timestamp())
-    submissions = api.search_submissions(after=start_time, before=1617998413,
+    submissions = api.search_submissions(after=start_time, before=1615383011,
                                         subreddit='wallstreetbets',
                                         filter=['id','url', 'selftext','author', 'title', 'domain'])
     reddit = praw.Reddit(client_id='8N3Jm_LZUT-sjQ',
@@ -45,8 +45,8 @@ def main():
     post_info = "post_info"
     comment_info = "comment_info"
 
-    i = 1000
-    j = 1
+    i = 200
+    j = 5
     post_comments = open("{}{}.csv".format(post_comments_info,j),'a')
     posts = open("{}{}.csv".format(post_info,j),'a')
     comments = open("{}{}.csv".format(comment_info,j),'a')   
@@ -84,8 +84,9 @@ def main():
         print(post_output)
         posts.write(post_output)
         print("----------------------COMMENTS----------------------")
-        cur_submission.comments.replace_more(limit=None, threshold=5)
+        cur_submission.comments.replace_more(limit=40000, threshold=5)
         comment_queue = cur_submission.comments[:]  # Seed with top-level
+        print("The length of the top-level comments is {}".format(len(comment_queue)))
         while comment_queue:
             comment = comment_queue.pop(0)
             comment_author = comment.author
