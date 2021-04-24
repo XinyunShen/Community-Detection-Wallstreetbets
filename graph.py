@@ -1,22 +1,33 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import sys
 
+def convert_graph(file_name, graph_name):
+    MG = nx.MultiGraph()
+    i = 0
+    f = open(file_name,'r').readlines()
+    for line in f:
+        i += 1
+        line = line.split(',')
+        post_author = line[2]
+        comment_author = line[3]
+        # print("{}: {},{}".format(i,post_author, comment_author))
+        MG.add_edge(post_author, comment_author)
 
-# f_name = ['post_comments_info1.csv','post_comments_info2.csv','post_comments_info3.csv','post_comments_info4.csv','post_comments_info5.csv','post_comments_info6.csv','post_comments_info7.csv','post_comments_info8.csv']
-# f_name = ['post_comments_info1.csv']
-MG = nx.MultiGraph()
-i = 0
-f = open('post_comments_info_total.csv','r').readlines()
-for line in f:
-    i += 1
-    line = line.split(',')
-    post_author = line[2]
-    comment_author = line[3]
-    # print("{}: {},{}".format(i,post_author, comment_author))
-    MG.add_edge(post_author, comment_author)
+    print("outside the loop")
+    nx.write_graphml(MG, graph_name)
+    print("saved the graphml")
 
-print("outside the loop")
-nx.write_gml(MG, "metagraph.graphml")
-print("saved the graphml")
-# nx.draw(MG)
-# plt.savefig("metagraph.png")
+def main(argv):
+    input_file = ''
+    graph_name = ''
+    for index, elem in enumerate(argv):
+        if elem == "--input_file":
+            input_file = argv[index + 1]
+        elif elem == "--graph_name":
+            graph_name = argv[index + 1]
+    
+    convert_graph(input_file, graph_name)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
