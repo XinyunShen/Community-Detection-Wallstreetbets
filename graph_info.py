@@ -102,7 +102,8 @@ def main(argv):
     node_num(G)
     edge_num(G)
     # distance_measure(G)
-    clustering_coef(G)
+    if weighted:
+        clustering_coef(G)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

@@ -66,7 +66,8 @@ def weighted_graph(file_name, graph_name, weight_dict):
         if weights != 0:
             i+= 1
             print("{}: {},{}".format(i,post_author, comment_author))
-            G.add_edge(post_author, comment_author, weight = weights)
+            G.add_edge(comment_author, post_author, weight = weights)
+            # G.add_edge(post_author, comment_author, weight = weights)
             weight_dict[key] = 0
     print("There are {} edges in the weighted graph".format(i))
     print("There are {} nodes in the weighted graph".format(len(node)))
@@ -87,7 +88,7 @@ def unweighted_graph(file_name, graph_name):
         node.add(comment_author)
         i += 1
         # print("{}: {},{}".format(i,post_author, comment_author))
-        G.add_edge(post_author, comment_author)
+        G.add_edge(comment_author, post_author)
     print("There are {} edges in the unweighted graph".format(i))
     print("There are {} nodes in the unweighted graph".format(len(node)))
     nx.write_graphml(G, graph_name)
