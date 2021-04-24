@@ -1,6 +1,11 @@
 # EECS476-final-project
 
 ## Generate Graph
+Please use post_comments_info_test.csv to get a quickly generated graph.
+Parameters:
+- ``input_file``: The input csv file
+- ``graph_name``: The output graph name
+- ``weighted``: Whether this graph is weighted or unweighted
 
 ``python3 graph.py --input_file post_comments_info_total.csv --graph_name weighted_metagraph.graphml --weighted y``
 
@@ -25,6 +30,10 @@ output_file:
 unweighted_metagraph.graphml
 
 ## Get Graph info 
+parameters:
+- ``graph_name``: The input graph name
+- ``weighted``: Whether this graph is weighted or unweighted
+
 
 ``$ python3 graph_info.py --graph_name weighted_metagraph.graphml --weighted y``
 
@@ -58,6 +67,13 @@ unweighted_degree_frequency.png
 
 ## Centrality Measures
 
+
+Parameters:
+- ``graph_name``: The input graph name
+- ``measure``: The measurements, you can choose pagerank/degree/closeness/beteeness/katz
+- ``graph_size``: You can create graph with customed graph size, for example 100/1000
+- ``output_path``: The output csv file name
+
 ### PageRank Centrality
 
 ``$ python3 centrality.py --graph_name test_metagraph.graphml --measure pagerank --graph_size 100 --output_path test_pagerank.csv``
@@ -77,3 +93,10 @@ unweighted_degree_frequency.png
 
 ### Katz Centrality
 ``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure katz --graph_size 1000 --output_path katz_centrality.csv --output_graph_name katz_centrality.png``
+
+
+## Acknowledgements
+
+This project was built as a final project for EECS 476 at the University of Michigan -- Ann Arbor.
+
+Authors - Xinyun Shen/ Xueming Xu
