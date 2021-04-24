@@ -27,3 +27,5 @@ output:
 
 There are 189825 nodes in the graph.
 There are 2991439 edges in the graph.
+
+``python3 pagerank.py --graph_name weighted_metagraph.graphml``
