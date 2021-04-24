@@ -71,3 +71,9 @@ unweighted_degree_frequency.png
 ### Closeness Centrality
 
 ``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure closeness --graph_size 1000 --output_path closeness_centrality.csv --output_graph_name closeness_centrality.png``
+
+### Betweeness Centrality
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure betweeness --graph_size 1000 --output_path betweeness_centrality.csv --output_graph_name betweeness_centrality.png``
+
+### Katz Centrality
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure katz --graph_size 1000 --output_path katz_centrality.csv --output_graph_name katz_centrality.png``

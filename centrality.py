@@ -120,7 +120,7 @@ def betweeness(G, graph_size, output_path, output_graph_name):
     reconstruct_graph(G, sorted_measures, graph_size, output_graph_name, 'WallstreetBets DiGraph Betweeness')
 
 def katz(G, graph_size, output_path, output_graph_name):
-    katz = nx.katz_centrality(DiG, alpha=0.1, beta=1.0)
+    katz = nx.katz_centrality(G, alpha=0.1, beta=1.0)
     print("calculate katz done.")
     sorted_measures = wirte2file(closeness, output_path)
     reconstruct_graph(G, sorted_measures, graph_size, output_graph_name, 'WallstreetBets DiGraph Katz')
