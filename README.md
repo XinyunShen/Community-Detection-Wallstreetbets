@@ -44,7 +44,7 @@ parameters:
 
 Parameters:
 - ``graph_name``: The input graph name
-- ``measure``: The measurements, you can choose pagerank/degree/closeness/beteeness/katz
+- ``measure``: The measurements, you can choose pagerank/degree/closeness/beteeness/hits
 - ``graph_size``: You can create graph with customed graph size, for example 100/1000
 - ``output_path``: The output csv file name
 
