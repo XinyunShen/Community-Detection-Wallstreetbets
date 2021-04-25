@@ -19,9 +19,12 @@ Parameters:
 Please use post_comments_info_test.csv to get a quickly generated graph.
 For test: 
 Generate a weighted graph:
+
 ``$ python3 graph.py --input_file post_comments_info_test.csv --graph_name weighted_metagraph.graphml --weighted y``
 
+
 Generate an unweighted graph:
+
 ``$ python3 graph.py --input_file post_comments_info_test.csv --graph_name unweighted_metagraph.graphml --weighted n``
 
 
