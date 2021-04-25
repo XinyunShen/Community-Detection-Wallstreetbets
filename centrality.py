@@ -125,6 +125,14 @@ def katz(G, graph_size, output_path, output_graph_name):
     sorted_measures = wirte2file(closeness, output_path)
     reconstruct_graph(G, sorted_measures, graph_size, output_graph_name, 'WallstreetBets DiGraph Katz')
 
+def hits(G, graph_size, output_path, output_graph_name):
+    h,a = nx.hits(G, max_iter=40)
+    print("calculate hits done.")
+    hub_measure = wirte2file(h, 'hub_'+output_path)
+    authority_measure = wirte2file(a, 'authority_'+output_path)
+    reconstruct_graph(G, hub_measure, graph_size, output_graph_name, 'WallstreetBets DiGraph Hub')
+    reconstruct_graph(G, authority_measure, graph_size, output_graph_name, 'WallstreetBets DiGraph Authority')
+
 def degree(G, graph_size, output_path, output_graph_name):
     centrality = nx.degree_centrality(G)
     print("calculate degree done.")
@@ -168,9 +176,11 @@ def main(argv):
     elif measure == 'closeness':
         closeness(G, graph_size, output_path, output_graph_name)
     elif measure == 'betweeness':
-        closeness(G, graph_size, output_path, output_graph_name)
+        betweeness(G, graph_size, output_path, output_graph_name)
     elif measure == 'katz':
-        closeness(G, graph_size, output_path, output_graph_name)
+        katz(G, graph_size, output_path, output_graph_name)
+    elif measure == 'hits':
+        hits(G, graph_size, output_path, output_graph_name)
 
 
 if __name__ == "__main__":
