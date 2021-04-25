@@ -50,25 +50,23 @@ Parameters:
 
 ### PageRank Centrality
 
-``$ python3 centrality.py --graph_name test_metagraph.graphml --measure pagerank --graph_size 100 --output_path test_pagerank.csv``
-
-``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure pagerank --graph_size 2000 --output_path pagerank.csv --output_graph_name pagerank.png``
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure pagerank --graph_size 100 --output_path pagerank.csv --output_graph_name pagerank.png``
 
 ### Degree Centrality
 
-``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure degree --graph_size 1000 --output_path degree_centrality.csv --output_graph_name degree_centrality.png``
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure degree --graph_size 100 --output_path degree_centrality.csv --output_graph_name degree_centrality.png``
 
 Following are pretty much similar so you don't need to test all of them.
 
 ### Closeness Centrality
 
-``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure closeness --graph_size 1000 --output_path closeness_centrality.csv --output_graph_name closeness_centrality.png``
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure closeness --graph_size 100 --output_path closeness_centrality.csv --output_graph_name closeness_centrality.png``
 
 ### Betweeness Centrality
-``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure betweeness --graph_size 1000 --output_path betweeness_centrality.csv --output_graph_name betweeness_centrality.png``
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure betweeness --graph_size 100 --output_path betweeness_centrality.csv --output_graph_name betweeness_centrality.png``
 
 ### Katz Centrality
-``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure katz --graph_size 1000 --output_path katz_centrality.csv --output_graph_name katz_centrality.png``
+``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure katz --graph_size 100 --output_path katz_centrality.csv --output_graph_name katz_centrality.png``
 
 
 ## Acknowledgements
