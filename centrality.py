@@ -119,12 +119,6 @@ def betweeness(G, graph_size, output_path, output_graph_name):
     sorted_measures = wirte2file(closeness, output_path)
     reconstruct_graph(G, sorted_measures, graph_size, output_graph_name, 'WallstreetBets DiGraph Betweeness')
 
-def katz(G, graph_size, output_path, output_graph_name):
-    katz = nx.katz_centrality(G, alpha=0.1, beta=1.0)
-    print("calculate katz done.")
-    sorted_measures = wirte2file(closeness, output_path)
-    reconstruct_graph(G, sorted_measures, graph_size, output_graph_name, 'WallstreetBets DiGraph Katz')
-
 def hits(G, graph_size, output_path, output_graph_name):
     h,a = nx.hits(G, max_iter=40)
     print("calculate hits done.")
@@ -177,8 +171,6 @@ def main(argv):
         closeness(G, graph_size, output_path, output_graph_name)
     elif measure == 'betweeness':
         betweeness(G, graph_size, output_path, output_graph_name)
-    elif measure == 'katz':
-        katz(G, graph_size, output_path, output_graph_name)
     elif measure == 'hits':
         hits(G, graph_size, output_path, output_graph_name)
 

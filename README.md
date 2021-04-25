@@ -65,10 +65,6 @@ Following are pretty much similar so you don't need to test all of them.
 ### Betweeness Centrality
 ``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure betweeness --graph_size 100 --output_path betweeness_centrality.csv --output_graph_name betweeness_centrality.png``
 
-### Katz Centrality
-``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure katz --graph_size 100 --output_path katz_centrality.csv --output_graph_name katz_centrality.png``
-
-
 ### Hits
 ``$ python3 centrality.py --graph_name weighted_metagraph.graphml --measure hits --graph_size 1000 --output_path hits.csv --output_graph_name hits.png``
 
