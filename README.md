@@ -1,8 +1,10 @@
 # EECS476-final-project
 
-- Our large dataset used in our project is post_comments_info_total.csv under this [google drive](https://drive.google.com/drive/folders/1BIWyCceb1NvVoGZw0uL0UF282WCe24yO?usp=sharing)
+- Our large dataset used in our project is post_comments_info_total.csv under this [google drive](https://drive.google.com/drive/folders/1BIWyCceb1NvVoGZw0uL0UF282WCe24yO?usp=sharing).
 
-- Our output score dataset in under the folder called centrality output data.
+- Our output score dataset is under the folder called [centrality output data](https://drive.google.com/drive/folders/1DRv-OsZBTq15iv_xDWqmd03B7M_pcUwW?usp=sharing).
+
+- Our output graph is under the folder called [graph](https://drive.google.com/drive/folders/18fl5r62oWO4uWHJ3lLXEPkcZeRHmE6Od?usp=sharing).
 
 - Our original crawled dataset using reddit api and pushshift api is under the foler called data.
 
