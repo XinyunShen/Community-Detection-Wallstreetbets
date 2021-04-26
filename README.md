@@ -1,5 +1,15 @@
 # EECS476-final-project
 
+- Our large dataset used in our project is post_comments_info_total.csv under this [google drive](https://drive.google.com/drive/folders/1BIWyCceb1NvVoGZw0uL0UF282WCe24yO?usp=sharing)
+
+- Our output score dataset in under the folder called centrality output data.
+
+- Our original crawled dataset using reddit api and pushshift api is under the foler called data.
+
+- You can run our code using ``$ ./run.sh``, with ``networkx`` python library installed in your computer.
+
+- If you still have some questions, please read the below instructions.
+
 ## Crawl Datat
 We use reddit api and pushshift api, this is not necessary to run because it is only the preparation for our project
 ``$ python3 get_data.py``
