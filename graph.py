@@ -65,7 +65,7 @@ def weighted_graph(file_name, graph_name, weight_dict):
         weights = weight_dict[key]
         if weights != 0:
             i+= 1
-            print("{}: {},{}".format(i,post_author, comment_author))
+            # print("{}: {},{}".format(i,post_author, comment_author))
             G.add_edge(comment_author, post_author, weight = weights)
             # G.add_edge(post_author, comment_author, weight = weights)
             weight_dict[key] = 0

@@ -27,7 +27,7 @@ def draw(G, pos, measures, measure_name, graph_name, labels):
     plt.title(measure_name)
     plt.colorbar(nodes)
     plt.axis('off')
-    plt.show()
+    # plt.show()
     plt.savefig(graph_name)
 
 
