@@ -1,2 +1,4 @@
 *.graphml
-*.csv
+# *.csv
+post_comments_info_total.csv
+/centrality_output_data
