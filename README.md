@@ -1,4 +1,4 @@
-# EECS476-final-project
+# Community Detection for Wallstreetbets subreddit
 
 - Our large dataset used in our project is post_comments_info_total.csv under this [google drive](https://drive.google.com/drive/folders/1BIWyCceb1NvVoGZw0uL0UF282WCe24yO?usp=sharing).
 
